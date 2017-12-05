@@ -1,0 +1,55 @@
+package com.kpgn.colormatch.utility;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
+
+import com.kpgn.colormatch.R;
+import com.kpgn.colormatch.constant.ApplicationConstant;
+
+public class DialogUtil {
+
+    public static void showAboutMessage(final Context context) {
+        final AlertDialog alertDialog = new AlertDialog.Builder(context)
+                .setPositiveButton(context.getResources().getString(R.string.cta_rate_us),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                launchPlayStore(context);
+                                dialog.dismiss();
+                            }
+                        })
+                .setNegativeButton(context.getResources().getString(R.string.cta_share),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                share(context);
+                                dialog.dismiss();
+                            }
+                        }).create();
+        alertDialog.setTitle(R.string.app_name);
+        alertDialog.setMessage(context.getResources().getString(R.string.copyright_message));
+        alertDialog.show();
+    }
+
+    private static void launchPlayStore(Context context) {
+        Uri uri = Uri.parse("market://details?id=" + ApplicationConstant.APP_ID);
+        Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+        try {
+            context.startActivity(goToMarket);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void share(Context context) {
+        Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, context.getString(R.string.share_via_subject));
+        intent.putExtra(android.content.Intent.EXTRA_TEXT, context.getString(R.string.share_via_text));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(Intent.createChooser(intent, context.getString(R.string.share_via_message)));
+    }
+}

@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+
+static def appVersionName() {
+    return "0.1"
+}
+
+static def appVersionCode() {
+    return 1
+}
+
+static def appBaseName() {
+    return "ColorMatch"
+}
+
+android {
+    compileSdkVersion 25
+    defaultConfig {
+        applicationId "com.kpgn.colormatch"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode appVersionCode()
+        versionName appVersionName()
+        setProperty("archivesBaseName", appBaseName())
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    def date = new Date();
+                    def formattedDate = date.format('ddMMyyyy_HHmm')
+                    outputFileName = appBaseName() + "_${variant.name}_v${variant.versionName}_d" + formattedDate + ".apk"
+                }
+            }
+        }
+        flavorDimensions "build"
+        productFlavors {
+            dev {
+                // Dev build
+                dimension "build"
+            }
+
+            prod {
+                // Prod build
+                dimension "build"
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:25.4.0'
+    implementation 'com.android.support:design:25.4.0'
+    implementation 'com.android.support:cardview-v7:25.4.0'
+
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+}

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Color Match</string>
+    <string name="app_description">Determine if the meaning matches the text color.</string>
+
+    <string name="best_score">Best Score</string>
+    <string name="maximum_cards">Maximum Cards</string>
+
+    <string name="cta_play_game">Rate Us</string>
+    <string name="cta_rate_us">Rate Us</string>
+    <string name="cta_share">Share</string>
+
+    <string name="share_via_message">Share via</string>
+    <string name="share_via_subject">Color Match</string>
+    <string name="share_via_text">http://play.google.com/store/apps/details?id=com.kpgn.colormatch</string>
+
+    <string name="copyright_message">Copyright \u00A9 Color Match 2017. All rights reserved.</string>
+</resources>
