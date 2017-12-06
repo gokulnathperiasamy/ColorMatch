@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'de.felixschulze.gradle.hockeyapp'
 
 static def appVersionName() {
     return "0.1"
@@ -48,6 +49,13 @@ android {
             }
         }
     }
+}
+
+hockeyapp {
+    apiToken = "08d65780218343b6b357dcf4323b1c65"
+    releaseType = 1
+    notify = 1
+    status = 2
 }
 
 dependencies {
