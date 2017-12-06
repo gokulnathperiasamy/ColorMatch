@@ -55,6 +55,7 @@
                 android:paddingStart="8dp"
                 android:paddingTop="8dp"
                 android:text="@string/time_text"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
             <TextView
@@ -66,6 +67,7 @@
                 android:paddingRight="8dp"
                 android:paddingTop="8dp"
                 android:text="0:45"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
                 tools:text="0:45" />
 
@@ -82,6 +84,7 @@
                 android:paddingStart="8dp"
                 android:paddingTop="8dp"
                 android:text="@string/score_text"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
             <TextView
@@ -93,6 +96,7 @@
                 android:paddingRight="8dp"
                 android:paddingTop="8dp"
                 android:text="113322"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
         </LinearLayout>
