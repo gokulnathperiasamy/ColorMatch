@@ -7,6 +7,18 @@
     android:background="@color/colorPrimary"
     tools:context=".activity.GameActivity">
 
+    <TextView
+        android:id="@+id/tv_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/circular_view"
+        android:gravity="center"
+        android:text="3"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
     <RelativeLayout
         android:id="@+id/score_timer_container"
         android:layout_width="match_parent"
@@ -18,13 +30,13 @@
         android:paddingRight="10dp">
 
         <ImageView
-            android:id="@+id/cta_pause"
+            android:id="@+id/cta_restart"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
             android:contentDescription="@string/app_name"
             android:padding="8dp"
-            android:src="@drawable/ic_pause" />
+            android:src="@drawable/ic_restart" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -95,7 +107,8 @@
         android:layout_centerInParent="true"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="match_parent"
@@ -140,7 +153,8 @@
             android:layout_gravity="center"
             android:contentDescription="@string/app_name"
             android:padding="8dp"
-            android:src="@drawable/ic_wrong" />
+            android:src="@drawable/ic_wrong"
+            android:visibility="invisible" />
 
     </LinearLayout>
 
