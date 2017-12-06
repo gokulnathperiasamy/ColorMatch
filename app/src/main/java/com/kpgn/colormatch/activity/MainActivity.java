@@ -1,5 +1,6 @@
 package com.kpgn.colormatch.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -38,5 +39,12 @@ public class MainActivity extends BaseActivity {
     @OnClick(R.id.cta_info)
     public void showInfoDialog(View view) {
         DialogUtil.showAboutMessage(this);
+    }
+
+    @SuppressWarnings("unused")
+    @OnClick(R.id.cta_start_game)
+    public void startGame(View view) {
+        startActivity(new Intent(this, GameActivity.class));
+        finish();
     }
 }

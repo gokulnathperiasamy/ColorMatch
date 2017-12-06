@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".activity.GameActivity">
+
+    <RelativeLayout
+        android:id="@+id/score_timer_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:id="@+id/cta_pause"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/app_name"
+            android:padding="8dp"
+            android:src="@drawable/ic_pause" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorOptionLight"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:paddingLeft="8dp"
+                android:paddingStart="8dp"
+                android:paddingTop="8dp"
+                android:text="@string/time_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:paddingBottom="8dp"
+                android:paddingEnd="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp"
+                android:text="0:45"
+                android:textStyle="bold"
+                tools:text="0:45" />
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:paddingLeft="8dp"
+                android:paddingStart="8dp"
+                android:paddingTop="8dp"
+                android:text="@string/score_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:paddingBottom="8dp"
+                android:paddingEnd="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp"
+                android:text="113322"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/question_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/demo_container"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/game_description"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <com.kpgn.colormatch.view.CustomCardView
+            android:id="@+id/ccv_option_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            custom:hintText="meaning"
+            custom:text="red"
+            custom:textColor="@android:color/holo_red_dark" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <com.kpgn.colormatch.view.CustomCardView
+            android:id="@+id/ccv_option_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            custom:hintText="text color"
+            custom:text="orange"
+            custom:textColor="@android:color/black" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <ImageView
+            android:id="@+id/img_answer_notification"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/app_name"
+            android:padding="8dp"
+            android:src="@drawable/ic_wrong" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/answer_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="4dp"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <Button
+            android:id="@+id/cta_no"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_weight="50"
+            android:background="@drawable/option_button_color"
+            android:padding="8dp"
+            android:text="@string/cta_no"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/cta_yes"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_weight="50"
+            android:background="@drawable/option_button_color"
+            android:padding="8dp"
+            android:text="@string/cta_yes"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</RelativeLayout>
