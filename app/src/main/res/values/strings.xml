@@ -6,6 +6,7 @@
     <string name="best_score">Best Score</string>
     <string name="maximum_cards">Maximum Cards</string>
     <string name="time_text">Time: </string>
+    <string name="formatted_time">0:%1s</string>
     <string name="score_text">Score: </string>
 
     <string name="cta_yes">Yes</string>
