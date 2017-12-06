@@ -1,5 +1,6 @@
 package com.kpgn.colormatch.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -66,7 +67,8 @@ public class GameActivity extends BaseActivity {
     }
 
     private void gameOver() {
-
+        startActivity(new Intent(this, HighScoreActivity.class));
+        finish();
     }
 
     @SuppressWarnings("unused")
