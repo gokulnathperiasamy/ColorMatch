@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -47,6 +48,12 @@ public class GameActivity extends BaseActivity {
 
     @BindView(R.id.img_answer_notification)
     ImageView mAnswerNotification;
+
+    @BindView(R.id.cta_yes)
+    Button mAnswerYes;
+
+    @BindView(R.id.cta_no)
+    Button mAnswerNo;
 
     private CountDownTimer countDownTimer;
     private QuestionEntity questionEntity;
@@ -131,10 +138,15 @@ public class GameActivity extends BaseActivity {
             mRestart.setVisibility(View.GONE);
             mQuestionContainer.setVisibility(View.GONE);
             mAnswerNotification.setVisibility(View.INVISIBLE);
+            mAnswerYes.setEnabled(false);
+            mAnswerNo.setEnabled(false);
         } else {
             mCounter.setVisibility(View.GONE);
             mRestart.setVisibility(View.VISIBLE);
             mQuestionContainer.setVisibility(View.VISIBLE);
+            mAnswerNotification.setVisibility(View.INVISIBLE);
+            mAnswerYes.setEnabled(true);
+            mAnswerNo.setEnabled(true);
         }
     }
 
