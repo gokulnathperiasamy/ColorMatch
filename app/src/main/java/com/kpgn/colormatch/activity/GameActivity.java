@@ -37,6 +37,9 @@ public class GameActivity extends BaseActivity {
     @BindView(R.id.tv_game_time)
     TextView mGameTime;
 
+    @BindView(R.id.tv_score)
+    TextView mScore;
+
     @BindView(R.id.question_container)
     View mQuestionContainer;
 
@@ -57,6 +60,7 @@ public class GameActivity extends BaseActivity {
 
     private CountDownTimer countDownTimer;
     private QuestionEntity questionEntity;
+    private long score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,9 +83,13 @@ public class GameActivity extends BaseActivity {
 
     private void setupQuestions() {
         toggleQuestionView(false);
-        startGameTimer(ApplicationConstant.GAME_PLAY_TIME);
-        mAnswerNotification.setVisibility(View.INVISIBLE);
+        initGame();
         getNewQuestion();
+    }
+
+    private void initGame() {
+        score = 0;
+        startGameTimer(ApplicationConstant.GAME_PLAY_TIME);
     }
 
     private void getNewQuestion() {
@@ -154,10 +162,16 @@ public class GameActivity extends BaseActivity {
         mAnswerNotification.setVisibility(View.VISIBLE);
         if (isCorrect) {
             mAnswerNotification.setImageDrawable(getResources().getDrawable(R.drawable.ic_correct));
+            updateScore();
         } else {
             mAnswerNotification.setImageDrawable(getResources().getDrawable(R.drawable.ic_wrong));
         }
         fadeOutAndHideImage(mAnswerNotification);
+    }
+
+    private void updateScore() {
+        score += 102;
+        mScore.setText(TextUtil.getFormattedScore(score));
     }
 
     private void fadeOutAndHideImage(final ImageView imageView) {
@@ -184,6 +198,7 @@ public class GameActivity extends BaseActivity {
         toggleQuestionView(true);
         mCounter.setText("3");
         mGameTime.setText(getString(R.string.formatted_time, "45"));
+        mScore.setText(TextUtil.getFormattedScore(0));
         cancelTimer();
         final Handler handler = new Handler();
         final AtomicInteger atomicInteger = new AtomicInteger(ApplicationConstant.COUNT_DOWN_TIMER);

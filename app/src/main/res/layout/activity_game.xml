@@ -67,7 +67,6 @@
                 android:paddingEnd="8dp"
                 android:paddingRight="8dp"
                 android:paddingTop="8dp"
-                android:text="0:45"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
                 tools:text="0:45" />
@@ -89,6 +88,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tv_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
@@ -96,9 +96,9 @@
                 android:paddingEnd="8dp"
                 android:paddingRight="8dp"
                 android:paddingTop="8dp"
-                android:text="113322"
                 android:textColor="@color/colorPrimary"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:text="000000" />
 
         </LinearLayout>
 

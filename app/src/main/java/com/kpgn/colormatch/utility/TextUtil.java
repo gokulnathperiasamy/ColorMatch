@@ -11,6 +11,10 @@ import java.util.Random;
 
 public abstract class TextUtil {
 
+    public static String getFormattedScore(long doubleValue) {
+        return String.format(Locale.US, "%06d", doubleValue);
+    }
+
     public static String getFormattedTime(long doubleValue) {
         return String.format(Locale.US, "%02d", doubleValue);
     }
