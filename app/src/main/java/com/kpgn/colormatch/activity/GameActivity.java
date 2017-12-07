@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -142,6 +145,26 @@ public class GameActivity extends BaseActivity {
         } else {
             mAnswerNotification.setImageDrawable(getResources().getDrawable(R.drawable.ic_wrong));
         }
+        fadeOutAndHideImage(mAnswerNotification);
+    }
+
+    private void fadeOutAndHideImage(final ImageView imageView) {
+        Animation fadeOut = new AlphaAnimation(1, 0);
+        fadeOut.setInterpolator(new AccelerateInterpolator());
+        fadeOut.setDuration(500);
+
+        fadeOut.setAnimationListener(new Animation.AnimationListener() {
+            public void onAnimationEnd(Animation animation) {
+                imageView.setVisibility(View.INVISIBLE);
+            }
+
+            public void onAnimationRepeat(Animation animation) {
+            }
+
+            public void onAnimationStart(Animation animation) {
+            }
+        });
+        imageView.startAnimation(fadeOut);
     }
 
     @SuppressLint("SetTextI18n")
