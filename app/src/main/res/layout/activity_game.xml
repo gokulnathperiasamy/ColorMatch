@@ -19,6 +19,22 @@
         android:textSize="32sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/tv_bonus_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        tools:text="+5" />
+
     <RelativeLayout
         android:id="@+id/score_timer_container"
         android:layout_width="match_parent"
@@ -96,13 +112,28 @@
                 android:paddingEnd="8dp"
                 android:paddingRight="8dp"
                 android:paddingTop="8dp"
+                android:text="000000"
                 android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
-                android:text="000000" />
+                android:textStyle="bold" />
 
         </LinearLayout>
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_bonus_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/score_timer_container"
+        android:paddingEnd="20dp"
+        android:paddingRight="20dp"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        tools:text="+500" />
 
     <LinearLayout
         android:id="@+id/question_container"

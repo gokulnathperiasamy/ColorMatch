@@ -7,6 +7,7 @@ public abstract class ApplicationConstant {
     public static final long GAME_PLAY_TIME = 45 * 1000;
     public static final int COUNT_DOWN_TIMER = 2;
     public static final long MILLI_SECOND = 1000;
+    public static final long FADE_OUT_DURATION = 500;
 
     public static final String COLOR_BLACK = "black";
     public static final String COLOR_YELLOW = "yellow";
@@ -21,4 +22,8 @@ public abstract class ApplicationConstant {
             COLOR_BLUE,
             COLOR_GREEN
     };
+
+    public static final long NORMAL_SCORE = 100;
+    public static final long BONUS_SCORE = 500;
+    public static final int BONUS_SPLIT = 5;
 }

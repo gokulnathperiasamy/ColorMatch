@@ -40,6 +40,9 @@ public class GameActivity extends BaseActivity {
     @BindView(R.id.tv_score)
     TextView mScore;
 
+    @BindView(R.id.tv_bonus_score)
+    TextView mBonusScore;
+
     @BindView(R.id.question_container)
     View mQuestionContainer;
 
@@ -52,6 +55,9 @@ public class GameActivity extends BaseActivity {
     @BindView(R.id.img_answer_notification)
     ImageView mAnswerNotification;
 
+    @BindView(R.id.tv_bonus_view)
+    TextView mBonusView;
+
     @BindView(R.id.cta_yes)
     Button mAnswerYes;
 
@@ -61,6 +67,7 @@ public class GameActivity extends BaseActivity {
     private CountDownTimer countDownTimer;
     private QuestionEntity questionEntity;
     private long score;
+    private int successiveCorrectAnswers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +86,7 @@ public class GameActivity extends BaseActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        finish();
     }
 
     private void setupQuestions() {
@@ -89,6 +97,7 @@ public class GameActivity extends BaseActivity {
 
     private void initGame() {
         score = 0;
+        successiveCorrectAnswers = 0;
         startGameTimer(ApplicationConstant.GAME_PLAY_TIME);
     }
 
@@ -162,22 +171,40 @@ public class GameActivity extends BaseActivity {
         mAnswerNotification.setVisibility(View.VISIBLE);
         if (isCorrect) {
             mAnswerNotification.setImageDrawable(getResources().getDrawable(R.drawable.ic_correct));
+            successiveCorrectAnswers++;
             updateScore();
         } else {
             mAnswerNotification.setImageDrawable(getResources().getDrawable(R.drawable.ic_wrong));
+            successiveCorrectAnswers = 0;
         }
-        fadeOutAndHideImage(mAnswerNotification);
+        fadeOutAndHideView(mAnswerNotification);
     }
 
     private void updateScore() {
-        score += 102;
+        score += ApplicationConstant.NORMAL_SCORE;
+        if (successiveCorrectAnswers % ApplicationConstant.BONUS_SPLIT == 0) {
+            int countSplit = successiveCorrectAnswers / ApplicationConstant.BONUS_SPLIT;
+            long countSplitScore = countSplit * ApplicationConstant.BONUS_SCORE;
+            score += countSplitScore;
+            animateBonusScore(countSplit, countSplitScore);
+        }
         mScore.setText(TextUtil.getFormattedScore(score));
     }
 
-    private void fadeOutAndHideImage(final ImageView imageView) {
+    @SuppressLint("SetTextI18n")
+    private void animateBonusScore(int countSplit, long countSplitScore) {
+        mBonusScore.setVisibility(View.VISIBLE);
+        mBonusView.setVisibility(View.VISIBLE);
+        mBonusScore.setText("+" + countSplitScore);
+        mBonusView.setText("+" + countSplit * ApplicationConstant.BONUS_SPLIT);
+        fadeOutAndHideView(mBonusScore);
+        fadeOutAndHideView(mBonusView);
+    }
+
+    private void fadeOutAndHideView(final View imageView) {
         Animation fadeOut = new AlphaAnimation(1, 0);
         fadeOut.setInterpolator(new AccelerateInterpolator());
-        fadeOut.setDuration(500);
+        fadeOut.setDuration(ApplicationConstant.FADE_OUT_DURATION);
 
         fadeOut.setAnimationListener(new Animation.AnimationListener() {
             public void onAnimationEnd(Animation animation) {
