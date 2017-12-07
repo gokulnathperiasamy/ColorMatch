@@ -15,7 +15,6 @@ import butterknife.ButterKnife;
 
 public class CustomCardView extends LinearLayout {
 
-
     @BindView(R.id.tv_hint_text)
     TextView mHintText;
 
@@ -36,7 +35,9 @@ public class CustomCardView extends LinearLayout {
         a.recycle();
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.view_custom_card, this, true);
+        if (inflater != null) {
+            inflater.inflate(R.layout.view_custom_card, this, true);
+        }
 
         setHintText(hintText);
         setTextAndColor(text, color);
@@ -48,11 +49,11 @@ public class CustomCardView extends LinearLayout {
         ButterKnife.bind(this, child.getRootView());
     }
 
-    private void setHintText(String hintText) {
+    public void setHintText(String hintText) {
         mHintText.setText(hintText);
     }
 
-    private void setTextAndColor(String text, int color) {
+    public void setTextAndColor(String text, int color) {
         mText.setText(text);
         mText.setTextColor(color);
     }

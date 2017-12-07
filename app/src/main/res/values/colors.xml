@@ -6,4 +6,10 @@
     <color name="colorOptionLight">#FFF7F7F7</color>
     <color name="colorOptionMedium">#FFCECFCE</color>
     <color name="colorOptionDark">#FFBEBEBE</color>
+
+    <color name="colorBlack">#000000</color>
+    <color name="colorYellow">#ffe600</color>
+    <color name="colorRed">#bc0000</color>
+    <color name="colorBlue">#004cfc</color>
+    <color name="colorGreen">#03a900</color>
 </resources>

@@ -1,5 +1,6 @@
 package com.kpgn.colormatch.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -10,7 +11,10 @@ import android.widget.TextView;
 
 import com.kpgn.colormatch.R;
 import com.kpgn.colormatch.constant.ApplicationConstant;
+import com.kpgn.colormatch.entity.QuestionEntity;
+import com.kpgn.colormatch.processor.QuestionGenerator;
 import com.kpgn.colormatch.utility.TextUtil;
+import com.kpgn.colormatch.view.CustomCardView;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -32,10 +36,17 @@ public class GameActivity extends BaseActivity {
     @BindView(R.id.question_container)
     View mQuestionContainer;
 
+    @BindView(R.id.ccv_option_a)
+    CustomCardView customCardViewOptionA;
+
+    @BindView(R.id.ccv_option_b)
+    CustomCardView customCardViewOptionB;
+
     @BindView(R.id.img_answer_notification)
     ImageView mAnswerNotification;
 
     private CountDownTimer countDownTimer;
+    private QuestionEntity questionEntity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +70,16 @@ public class GameActivity extends BaseActivity {
     private void setupQuestions() {
         toggleQuestionView(false);
         startGameTimer(ApplicationConstant.GAME_PLAY_TIME);
+        mAnswerNotification.setVisibility(View.INVISIBLE);
         getNewQuestion();
     }
 
     private void getNewQuestion() {
-        //mAnswerNotification.setVisibility(View.INVISIBLE);
+        questionEntity = QuestionGenerator.getQuestion();
+        customCardViewOptionA.setTextAndColor(questionEntity.getTextA(),
+                TextUtil.getColorInt(this, questionEntity.getTextAColor()));
+        customCardViewOptionB.setTextAndColor(questionEntity.getTextB(),
+                TextUtil.getColorInt(this, questionEntity.getTextBColor()));
     }
 
     private void gameOver() {
@@ -80,13 +96,30 @@ public class GameActivity extends BaseActivity {
     @SuppressWarnings("unused")
     @OnClick(R.id.cta_yes)
     public void optionYes(View view) {
-        toggleAnswerNotification(true);
+        checkAnswer(true);
     }
 
     @SuppressWarnings("unused")
     @OnClick(R.id.cta_no)
     public void optionNo(View view) {
-        toggleAnswerNotification(false);
+        checkAnswer(false);
+    }
+
+    private void checkAnswer(boolean isYesPressed) {
+        if (questionEntity.isCorrect()) {
+            if (isYesPressed) {
+                toggleAnswerNotification(true);
+            } else {
+                toggleAnswerNotification(false);
+            }
+        } else {
+            if (isYesPressed) {
+                toggleAnswerNotification(false);
+            } else {
+                toggleAnswerNotification(true);
+            }
+        }
+        getNewQuestion();
     }
 
     private void toggleQuestionView(boolean isHidden) {
@@ -111,6 +144,7 @@ public class GameActivity extends BaseActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void showGameStartTimerAndStartGame() {
         toggleQuestionView(true);
         mCounter.setText("3");
