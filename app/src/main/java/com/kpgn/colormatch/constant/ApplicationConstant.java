@@ -26,4 +26,7 @@ public abstract class ApplicationConstant {
     public static final long NORMAL_SCORE = 100;
     public static final long BONUS_SCORE = 500;
     public static final int BONUS_SPLIT = 5;
+
+    public static final String SP_HIGH_SCORE = APP_ID + ".score";
+    public static final String SP_MAXIMUM_CARDS = APP_ID + ".cards";
 }

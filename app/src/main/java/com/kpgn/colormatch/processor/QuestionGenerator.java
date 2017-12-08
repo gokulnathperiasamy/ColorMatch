@@ -6,11 +6,7 @@ import com.kpgn.colormatch.utility.TextUtil;
 
 public class QuestionGenerator {
 
-    private static int arrayLength;
-
-    static {
-        arrayLength = ApplicationConstant.COLOR_TEXT.length - 1;
-    }
+    private static int arrayLength = ApplicationConstant.COLOR_TEXT.length - 1;
 
     public static QuestionEntity getQuestion() {
         String tempTextA = ApplicationConstant.COLOR_TEXT[TextUtil.getRandomInt(0, arrayLength)];

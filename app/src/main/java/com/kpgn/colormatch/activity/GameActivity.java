@@ -12,11 +12,13 @@ import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kpgn.colormatch.R;
 import com.kpgn.colormatch.constant.ApplicationConstant;
 import com.kpgn.colormatch.entity.QuestionEntity;
 import com.kpgn.colormatch.processor.QuestionGenerator;
+import com.kpgn.colormatch.utility.PreferenceUtil;
 import com.kpgn.colormatch.utility.TextUtil;
 import com.kpgn.colormatch.view.CustomCardView;
 
@@ -68,6 +70,7 @@ public class GameActivity extends BaseActivity {
     private QuestionEntity questionEntity;
     private long score;
     private int successiveCorrectAnswers;
+    private int correctAnswers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +101,7 @@ public class GameActivity extends BaseActivity {
     private void initGame() {
         score = 0;
         successiveCorrectAnswers = 0;
+        correctAnswers = 0;
         startGameTimer(ApplicationConstant.GAME_PLAY_TIME);
     }
 
@@ -110,7 +114,10 @@ public class GameActivity extends BaseActivity {
     }
 
     private void gameOver() {
-        startActivity(new Intent(this, HighScoreActivity.class));
+        PreferenceUtil.setHighScore(this, score);
+        PreferenceUtil.setMaximumCards(this, correctAnswers);
+        Toast.makeText(this, "Game Over. You scored " + score, Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, MainActivity.class));
         finish();
     }
 
@@ -172,6 +179,7 @@ public class GameActivity extends BaseActivity {
         if (isCorrect) {
             mAnswerNotification.setImageDrawable(getResources().getDrawable(R.drawable.ic_correct));
             successiveCorrectAnswers++;
+            correctAnswers++;
             updateScore();
         } else {
             mAnswerNotification.setImageDrawable(getResources().getDrawable(R.drawable.ic_wrong));
