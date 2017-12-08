@@ -148,7 +148,21 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_last_game_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/main_container"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        tools:text="Game Over!\nYou scored 123456 (99 cards)" />
+
     <LinearLayout
+        android:id="@+id/cta_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/view_copyright"

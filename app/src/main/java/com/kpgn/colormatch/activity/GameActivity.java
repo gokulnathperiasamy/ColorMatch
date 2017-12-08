@@ -116,8 +116,14 @@ public class GameActivity extends BaseActivity {
     private void gameOver() {
         PreferenceUtil.setHighScore(this, score);
         PreferenceUtil.setMaximumCards(this, correctAnswers);
-        Toast.makeText(this, "Game Over. You scored " + score, Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, MainActivity.class));
+        startMainActivity();
+    }
+
+    private void startMainActivity() {
+        Intent intentMain = new Intent(this, MainActivity.class);
+        intentMain.putExtra(ApplicationConstant.EXTRA_GAME_SCORE,
+                getString(R.string.game_over_message, score, correctAnswers));
+        startActivity(intentMain);
         finish();
     }
 
@@ -189,10 +195,10 @@ public class GameActivity extends BaseActivity {
     }
 
     private void updateScore() {
-        score += ApplicationConstant.NORMAL_SCORE;
+        score += TextUtil.getRandomInt(79, 99);
         if (successiveCorrectAnswers % ApplicationConstant.BONUS_SPLIT == 0) {
             int countSplit = successiveCorrectAnswers / ApplicationConstant.BONUS_SPLIT;
-            long countSplitScore = countSplit * ApplicationConstant.BONUS_SCORE;
+            long countSplitScore = countSplit * TextUtil.getRandomInt(501, 599);
             score += countSplitScore;
             animateBonusScore(countSplit, countSplitScore);
         }

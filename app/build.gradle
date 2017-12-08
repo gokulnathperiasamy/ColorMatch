@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'de.felixschulze.gradle.hockeyapp'
 
 static def appVersionName() {
-    return "0.3"
+    return "0.4"
 }
 
 static def appVersionCode() {

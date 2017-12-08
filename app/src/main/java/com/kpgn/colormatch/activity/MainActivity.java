@@ -3,9 +3,11 @@ package com.kpgn.colormatch.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.kpgn.colormatch.R;
+import com.kpgn.colormatch.constant.ApplicationConstant;
 import com.kpgn.colormatch.utility.DialogUtil;
 import com.kpgn.colormatch.utility.PreferenceUtil;
 
@@ -20,6 +22,12 @@ public class MainActivity extends BaseActivity {
 
     @BindView(R.id.tv_max_cards)
     TextView mMaximumCards;
+
+    @BindView(R.id.tv_last_game_text)
+    TextView mLastGameText;
+
+    @BindView(R.id.cta_start_game)
+    Button mStartGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +51,19 @@ public class MainActivity extends BaseActivity {
     private void setupView() {
         mHighScore.setText(String.valueOf(PreferenceUtil.getHighScore(this)));
         mMaximumCards.setText(String.valueOf(PreferenceUtil.getMaximumCards(this)));
+
+        if (getIntent() != null && getIntent().getExtras() != null) {
+            String message= getIntent().getExtras()
+                    .getString(ApplicationConstant.EXTRA_GAME_SCORE, null);
+            if (message != null && message.length() > 0) {
+                mLastGameText.setText(message);
+                mLastGameText.setVisibility(View.VISIBLE);
+                mStartGame.setText(getString(R.string.cta_restart_game));
+            }
+        } else {
+            mLastGameText.setVisibility(View.INVISIBLE);
+            mStartGame.setText(getString(R.string.cta_play_game));
+        }
     }
 
     @SuppressWarnings("unused")
