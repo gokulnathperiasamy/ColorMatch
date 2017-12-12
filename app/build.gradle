@@ -3,7 +3,7 @@ apply plugin: 'io.fabric'
 apply plugin: 'de.felixschulze.gradle.hockeyapp'
 
 static def appVersionName() {
-    return "0.6"
+    return "0.7"
 }
 
 static def appVersionCode() {
