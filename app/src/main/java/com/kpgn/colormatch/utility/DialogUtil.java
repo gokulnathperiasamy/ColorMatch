@@ -6,12 +6,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.kpgn.colormatch.R;
 import com.kpgn.colormatch.constant.ApplicationConstant;
+import com.kpgn.colormatch.manager.AnalyticsManager;
 
 public class DialogUtil {
 
-    public static void showAboutMessage(final Context context) {
+    public static void showAboutMessage(final Context context, final FirebaseAnalytics mFirebaseAnalytics) {
         final AlertDialog alertDialog = new AlertDialog.Builder(context)
                 .setPositiveButton(context.getResources().getString(R.string.cta_rate_us),
                         new DialogInterface.OnClickListener() {
@@ -25,7 +27,7 @@ public class DialogUtil {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
-                                share(context);
+                                share(context, mFirebaseAnalytics);
                                 dialog.dismiss();
                             }
                         }).create();
@@ -44,12 +46,13 @@ public class DialogUtil {
         }
     }
 
-    private static void share(Context context) {
+    private static void share(Context context, FirebaseAnalytics mFirebaseAnalytics) {
         Intent intent = new Intent(android.content.Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(android.content.Intent.EXTRA_SUBJECT, context.getString(R.string.share_via_subject));
         intent.putExtra(android.content.Intent.EXTRA_TEXT, context.getString(R.string.share_via_text));
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(Intent.createChooser(intent, context.getString(R.string.share_via_message)));
+        AnalyticsManager.trackShares(mFirebaseAnalytics);
     }
 }

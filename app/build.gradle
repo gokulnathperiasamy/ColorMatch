@@ -1,8 +1,9 @@
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
 apply plugin: 'de.felixschulze.gradle.hockeyapp'
 
 static def appVersionName() {
-    return "0.4"
+    return "0.5"
 }
 
 static def appVersionCode() {
@@ -25,9 +26,6 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
             android.applicationVariants.all { variant ->
                 variant.outputs.all {
                     def date = new Date();
@@ -66,4 +64,10 @@ dependencies {
 
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.google.firebase:firebase-core:11.6.2'
+    implementation('com.crashlytics.sdk.android:crashlytics:2.7.1@aar') {
+        transitive = true
+    }
 }
+
+apply plugin: 'com.google.gms.google-services'

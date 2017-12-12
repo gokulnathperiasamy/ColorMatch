@@ -12,11 +12,11 @@ import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.kpgn.colormatch.R;
 import com.kpgn.colormatch.constant.ApplicationConstant;
 import com.kpgn.colormatch.entity.QuestionEntity;
+import com.kpgn.colormatch.manager.AnalyticsManager;
 import com.kpgn.colormatch.processor.QuestionGenerator;
 import com.kpgn.colormatch.utility.PreferenceUtil;
 import com.kpgn.colormatch.utility.TextUtil;
@@ -116,6 +116,8 @@ public class GameActivity extends BaseActivity {
     private void gameOver() {
         PreferenceUtil.setHighScore(this, score);
         PreferenceUtil.setMaximumCards(this, correctAnswers);
+        AnalyticsManager.trackScore(mFirebaseAnalytics, score);
+        AnalyticsManager.trackCards(mFirebaseAnalytics, correctAnswers);
         startMainActivity();
     }
 

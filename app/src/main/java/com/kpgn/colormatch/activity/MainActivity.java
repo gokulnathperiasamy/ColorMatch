@@ -69,7 +69,7 @@ public class MainActivity extends BaseActivity {
     @SuppressWarnings("unused")
     @OnClick(R.id.cta_info)
     public void showInfoDialog(View view) {
-        DialogUtil.showAboutMessage(this);
+        DialogUtil.showAboutMessage(this, mFirebaseAnalytics);
     }
 
     @SuppressWarnings("unused")
