@@ -17,7 +17,7 @@ dependencies:
 test:
     override:
         #assemble the apk if tests were successful
-        - ./gradlew clean assemble uploadProdDebugToHockeyApp
+        - ./gradlew clean assemble uploadProdReleaseToHockeyApp
 
         # copy the build to the artifacts.
         - cp -r app/build/outputs/apk $CIRCLE_ARTIFACTS
