@@ -12,3 +12,5 @@
 /.idea
 
 local.properties
+
+app/app.iml
