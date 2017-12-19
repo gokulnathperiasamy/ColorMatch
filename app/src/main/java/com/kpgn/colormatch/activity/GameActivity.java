@@ -89,6 +89,7 @@ public class GameActivity extends BaseActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        cancelTimer();
         finish();
     }
 

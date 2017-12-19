@@ -104,7 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="10303"
-                android:textColor="@android:color/holo_red_dark"
+                android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 tools:text="10303" />
@@ -139,7 +139,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="34 Cards"
-                android:textColor="@android:color/holo_red_dark"
+                android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 tools:text="34 Cards" />
