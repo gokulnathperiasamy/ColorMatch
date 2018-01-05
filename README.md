@@ -11,6 +11,6 @@ Google Play Store Link: https://play.google.com/store/apps/details?id=com.kpgn.c
 
 CircleCI Build: https://circleci.com/gh/gokulnathperiasamy/ColorMatch
 
-### Author
+#### Author
 
-###### Gokul Nath KP
+- Gokul Nath KP
