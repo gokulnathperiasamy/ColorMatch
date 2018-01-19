@@ -11,6 +11,8 @@ Google Play Store Link: https://play.google.com/store/apps/details?id=com.kpgn.c
 
 CircleCI Build: https://circleci.com/gh/gokulnathperiasamy/ColorMatch
 
+iOS Version: [ColorMatch-iOS](https://github.com/gokulnathperiasamy/ColorMatch-iOS)
+
 #### Author
 
 - Gokul Nath KP
