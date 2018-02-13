@@ -1,4 +1,4 @@
-# ColorMatch [![CircleCI](https://circleci.com/gh/gokulnathperiasamy/ColorMatch-Android/tree/master.svg?style=shield)](https://circleci.com/gh/gokulnathperiasamy/ColorMatch/tree/master)
+# ColorMatch [![CircleCI](https://circleci.com/gh/gokulnathperiasamy/ColorMatch-Android/tree/master.svg?style=shield)](https://circleci.com/gh/gokulnathperiasamy/ColorMatch-Android/tree/master)
 
 > Determine if the meaning matches the text color.
 
