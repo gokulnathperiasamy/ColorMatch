@@ -9,7 +9,7 @@
 
 Google Play Store Link: https://play.google.com/store/apps/details?id=com.kpgn.colormatch
 
-CircleCI Build: https://circleci.com/gh/gokulnathperiasamy/ColorMatch
+CircleCI: https://circleci.com/gh/gokulnathperiasamy/ColorMatch-Android
 
 iOS Version: [ColorMatch-iOS](https://github.com/gokulnathperiasamy/ColorMatch-iOS)
 
